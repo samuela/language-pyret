@@ -1,0 +1,97 @@
+fileTypes: [
+  "arr"
+]
+name: "Pyret"
+patterns: [
+  {
+    comment: "Delimiters"
+    match: "(!|->|=>|:=|\\[|\\]|{|}|:\\s)"
+    name: "keyword.other.delimiters.arr"
+  }
+  {
+    comment: "()"
+    match: "(\\(|\\)|\\.|::|=)"
+    name: "variable.arr"
+  }
+  {
+    comment: false
+    match: "(\\|)"
+    name: "storage.type.delimiters.arr"
+  }
+  {
+    comment: "cases"
+    match: "(^\\s\\|) ([a-zA-Z0-9\\-]*) (=>)"
+    name: "variable.arr"
+  }
+  {
+    comment: "Basic keywords"
+    match: "\\s(fun\\s|where:|end\\s|type\\s|data\\b|import\\b|provide\\b|var\\b|fun:\\s|with:\\s|sharing:\\s|as\\b|try:\\s|except\\b|when\\b|for\\b|from\\b|check:\\s|where:\\s|doc:\\s|and\\b|or\\b| not |else:\\s|\\sif\\s|is==\\s|is=~\\s|is<=>\\s|is-not==\\s|is-not=~\\s|is-not<=>\\s|is-not\\b|is\\s|raises\\b|deriving\\b|ref\\b|graph:\\s|m-graph:\\s|block:\\s|satisfies\\b|shadow\\b|\\slam\\b|type-let\\b|provide-types\\b|newtype\\b|cases)"
+    name: "keyword.operators.arr"
+  }
+  {
+    comment: "Keywords that start a line"
+    match: "^(fun\\s|where:|end\\s|type\\s|data\\b|import\\b|provide\\b|check\\s|cases)"
+    name: "keyword.operators.arr"
+  }
+  {
+    captures:
+      "1":
+        name: "keyword.operators.case.arr"
+      "2":
+        name: "storage.type.class.arr"
+      "3":
+        name: "string.arr"
+    comment: "cases"
+    match: "(cases)\\(([a-zA-Z\\-<>]*)\\) ([a-zA-Z\\-]*)(\\:)"
+    name: "variable.operators.arr"
+  }
+  {
+    comment: "operators"
+    match: "( \\+ | - | \\/ | \\* | > | < | >= | <= | <> )"
+    name: "keyword.operator.arr"
+  }
+  {
+    begin: "(#\\|)"
+    comment: "multi-line comments"
+    end: "(\\|#)"
+    name: "string.arr"
+  }
+  {
+    comment: "comments"
+    match: "\\#.*$"
+    name: "comment.line.number-sign.arr"
+  }
+  {
+    begin: "\\\""
+    comment: "strings"
+    end: "\\\""
+    name: "string.arr"
+  }
+  {
+    begin: "\\'"
+    comment: "strings"
+    end: "\\'"
+    name: "string.arr"
+  }
+  {
+    begin: "(```)"
+    comment: "strings"
+    end: "(```)"
+    name: "string.arr"
+  }
+  {
+    comment: "numbers"
+    match: "( [0-9]+ )"
+    name: "constant.numeric.arr"
+  }
+  {
+    increaseIndentPattern: "<!--"
+  }
+  {
+    decreaseIndentPattern: "(\\:)"
+  }
+  {
+    highlightPairs: "( ) [ ] { } / /"
+  }
+]
+scopeName: "source.arr"
