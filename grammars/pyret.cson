@@ -54,7 +54,7 @@ patterns: [
     begin: "(#\\|)"
     comment: "multi-line comments"
     end: "(\\|#)"
-    name: "string.arr"
+    name: "comment.block.arr"
   }
   {
     comment: "comments"
