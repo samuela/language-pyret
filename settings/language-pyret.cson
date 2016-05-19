@@ -1,3 +1,5 @@
 '.source.arr':
   'editor':
     'commentStart': '# '
+    'increaseIndentPattern': ':$'
+    'decreaseIndentPattern': '(?<!-)(\\b|^)end'

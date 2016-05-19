@@ -1,7 +1,8 @@
+name: "Pyret"
+scopeName: "source.arr"
 fileTypes: [
   "arr"
 ]
-name: "Pyret"
 patterns: [
   {
     comment: "Delimiters"
@@ -19,26 +20,9 @@ patterns: [
     name: "storage.type.delimiters.arr"
   }
   {
-    comment: "cases"
-    match: "(^\\s\\|) ([a-zA-Z0-9\\-]*) (=>)"
-    name: "variable.arr"
-  }
-  {
     comment: "Basic keywords"
     match: "(?<!-)(\\b|^)(var|end|type|type-let|newtype|include|import|provide|provide-types|fun|lam|check:|where:|examples:|doc:|is==|is=~|is<=>|is-not==|is-not=~|is-not<=>|is|is-not|raises|satisfies|violates|does-not-raise|raises-violates|raises-satisfies|raises-other-than|data|method|with:|sharing:|as|when|for|from|and|or|not|if|else|deriving|ref|block:|shadow|let|letrec|rec|cases|ask|then:|otherwise:)(?!-)(\\b|$)"
     name: "keyword.operators.arr"
-  }
-  {
-    captures:
-      "1":
-        name: "keyword.operators.case.arr"
-      "2":
-        name: "storage.type.class.arr"
-      "3":
-        name: "string.arr"
-    comment: "cases"
-    match: "(cases)\\(([a-zA-Z\\-<>]*)\\) ([a-zA-Z\\-]*)(\\:)"
-    name: "variable.operators.arr"
   }
   {
     comment: "operators"
@@ -46,8 +30,8 @@ patterns: [
     name: "keyword.operator.arr"
   }
   {
-    begin: "(#\\|)"
     comment: "multi-line comments"
+    begin: "(#\\|)"
     end: "(\\|#)"
     name: "comment.block.arr"
   }
@@ -57,36 +41,39 @@ patterns: [
     name: "comment.line.number-sign.arr"
   }
   {
-    begin: "\\\""
-    comment: "strings"
-    end: "\\\""
+    comment: "double quoted strings"
+    match: "\"[^\"]*\""
     name: "string.arr"
   }
   {
-    begin: "\\'"
-    comment: "strings"
-    end: "\\'"
+    comment: "single quoted strings"
+    match: "'[^']*'"
     name: "string.arr"
   }
   {
-    begin: "(```)"
-    comment: "strings"
-    end: "(```)"
+    comment: "triple quoted strings"
+    begin: "```"
+    end: "```"
     name: "string.arr"
+  }
+  {
+    comment: "unterminated double quoted string"
+    match: "\"[^\"]*$"
+    name: "invalid.illegal"
+  }
+  {
+    comment: "unterminated single quoted string"
+    match: "'[^']*$"
+    name: "invalid.illegal"
   }
   {
     comment: "numbers"
-    match: "( [0-9]+ )"
+    match: "(?<![a-zA-Z0-9_-])-?[0-9]+([/.][0-9]+)?"
     name: "constant.numeric.arr"
   }
   {
-    increaseIndentPattern: "<!--"
-  }
-  {
-    decreaseIndentPattern: "(\\:)"
-  }
-  {
-    highlightPairs: "( ) [ ] { } / /"
+    comment: "rough numbers"
+    match: "(?<![a-zA-Z0-9_-])~-?[0-9]+(\\.[0-9]+)?"
+    name: "constant.other.arr"
   }
 ]
-scopeName: "source.arr"
